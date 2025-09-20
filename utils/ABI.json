@@ -1,0 +1,469 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "userId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "viewer",
+				"type": "address"
+			}
+		],
+		"name": "AccessGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "userId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "reportId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "isShared",
+				"type": "bool"
+			}
+		],
+		"name": "ReportShared",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "reportId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "userId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "fileCount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "ReportStored",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			}
+		],
+		"name": "getAllowedViewers",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_reportId",
+				"type": "string"
+			}
+		],
+		"name": "getReportById",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "reportId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ipfsHash",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "fileName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "fileType",
+								"type": "string"
+							}
+						],
+						"internalType": "struct ReportManager.FileInfo[]",
+						"name": "files",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasMultipleFiles",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fileCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ReportManager.ReportInfo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			}
+		],
+		"name": "getReportCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_reportId",
+				"type": "string"
+			}
+		],
+		"name": "getReportFiles",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "fileType",
+						"type": "string"
+					}
+				],
+				"internalType": "struct ReportManager.FileInfo[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "durationInMonths",
+				"type": "uint256"
+			}
+		],
+		"name": "getReports",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "reportId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "ipfsHash",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "fileName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "fileType",
+								"type": "string"
+							}
+						],
+						"internalType": "struct ReportManager.FileInfo[]",
+						"name": "files",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasMultipleFiles",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fileCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ReportManager.ReportInfo[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			}
+		],
+		"name": "getUserWallet",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_viewer",
+				"type": "address"
+			}
+		],
+		"name": "grantAccess",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_viewer",
+				"type": "address"
+			}
+		],
+		"name": "hasAccess",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_reportId",
+				"type": "string"
+			}
+		],
+		"name": "isReportShared",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_viewer",
+				"type": "address"
+			}
+		],
+		"name": "revokeAccess",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_reportId",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "_isShared",
+				"type": "bool"
+			}
+		],
+		"name": "shareReport",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_reportId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userId",
+				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_ipfsHashes",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_fileNames",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_fileTypes",
+				"type": "string[]"
+			}
+		],
+		"name": "storeReport",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
