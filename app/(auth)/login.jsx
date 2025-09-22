@@ -54,7 +54,7 @@ export default function Login() {
 
       const data = await res.json();
 
-      console.log("data", data);
+      console.log("data : ", data);
 
       if (data.success) {
         if (data.token) {
@@ -261,7 +261,7 @@ export default function Login() {
 
               {/* App Title */}
               <Text className="text-4xl font-bold text-gray-800 mb-2">
-                MediCare+
+                CareConnect
               </Text>
               <Text className="text-gray-500 text-lg mb-4">
                 Your Health Companion

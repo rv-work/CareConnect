@@ -210,7 +210,7 @@ export default function Start() {
                   textShadowRadius: 4,
                 }}
               >
-                MediCare+
+                CareConnect
               </Text>
               <Text
                 style={{
